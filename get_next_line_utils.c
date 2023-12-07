@@ -1,6 +1,17 @@
 #include "get_next_line.h"
 
 
+
+size_t ft_line_len(char *str)
+{
+	size_t i;
+
+	i = 0 ;
+	while(str[i] != '\n')
+		i++;
+	return(i);
+}
+
 size_t ft_strlen(char *str)
 {
 	size_t i;
@@ -40,23 +51,37 @@ char	*ft_strdup(char *s1)
 }
 
 
-char *rest(char *str)
-{
-	size_t	size;
-	char	*dst;
-	size_t i;
+// char *rest(char *str)
+// {
+// 	char	*dst;
+// 	int		i;
+// 	int		j;
 
-	size = ft_strlen(str);
-	i = size - 1;
-	// while(str[i])
-	// {
-	// 	if(str[i] == '\n')
-	// 		dst = ft_strdup(str[i++]);
-	// 	i--;
-	// }
-	
+// 	i = ft_line_len(str);
+// 	j = 0;
+// 	dst = malloc(sizeof(char) * ft_line_len(str) + 1);
+
+// 	while(str[i])
+// 		dst[j++] = str[i++];
+// 	dst[j + 1] = '\n';
+// 	return (dst);
+// }
+char	*rest(char *str)
+{
+	char	*dst;
+	int		i;
+	int		j;
+
+	i = ft_line_len(str);
+	j = 0;
+	dst = malloc(sizeof(char) * (ft_line_len(str) + 1));
+
+	while (str[i])
+		dst[j++] = str[i++];
+	dst[j] = '\0'; // Null-terminate the destination string
 	return (dst);
 }
+
 char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*new_str;

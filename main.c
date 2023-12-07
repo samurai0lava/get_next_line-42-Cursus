@@ -9,5 +9,8 @@ int main()
 	char *line;
 	line = get_next_line(fd);
 	printf("%s\n", line);
-
+	free(line); 
+	char *line2 = get_next_line(fd);
+	printf("%s\n", line2);
+	free(line2);
 }
