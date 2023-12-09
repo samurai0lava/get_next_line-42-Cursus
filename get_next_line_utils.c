@@ -57,17 +57,24 @@ char *backup(char *str)
 	size_t i;
 	size_t j;
 
+	
 	i = 0;
 	j = 0;
 	backup = malloc(sizeof(char) * ft_strlen(str) + 1);
 	if(!backup)
 		return(NULL);
-	while(str[i] != '\n')
+	while(str[i] != '\n' && str[i] != '\0')
 		i++;
 	i++;
 	while(str[i])
 		backup[j++] = str[i++];
 	backup[j] = '\0';
+	free(str);
+	if (backup[0] == '\0')
+	{
+		free(backup);
+		return(NULL);
+	}
 	return(backup);
 }
 

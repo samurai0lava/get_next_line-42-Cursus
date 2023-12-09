@@ -19,6 +19,7 @@ char *get_next_line(int fd)
     static char *content;
     int j;
     char *line;
+    char *tmp;
 
     j = 0;
     i = 0;
@@ -26,10 +27,12 @@ char *get_next_line(int fd)
     buff[BUFF_SIZE] = '\0'; 
 
     int bytesRead;
-    while ((bytesRead = read(fd, buff, BUFF_SIZE)) > 0 && buff[0] != '\n' && buff[0] != '\0')
+    while (buff && (bytesRead = read(fd, buff, BUFF_SIZE)) > 0 )
     {
         buff[bytesRead] = '\0'; 
-        content = ft_strjoin(content, buff);
+        tmp = ft_strjoin(content, buff);
+        free(content);
+        content = tmp;
         while (buff[i] != '\0' && buff[i] != '\n')
             i++;
         if (buff[i] == '\n' || buff[i] == '\0')

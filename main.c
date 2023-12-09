@@ -7,18 +7,9 @@ int main()
 	fd = open("Lorem", O_RDONLY);
 
 	char *line;
-	line = get_next_line(fd);
-	printf("%s\n", line);
-	free(line); 
-	char *line2 = get_next_line(fd);
-	printf("%s\n", line2);
-	free(line2);
-	char *line3 = get_next_line(fd);
-	printf("%s\n", line3);
-	free(line3);
-	char *line4 = get_next_line(fd);
-	printf("%s\n", line4);
-	free(line4);
-
-
+	while ((line = get_next_line(fd)))
+	{
+		//printf("%s\n", line);
+		free(line);
+	}
 }
