@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+    /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
@@ -111,7 +111,6 @@ char *get_next_line(int fd)
         i = 0; // Reset i for the next iteration
     }
     free(buff);
-
     line = malloc(sizeof(char) * (j + 1));
     i = 0;
     while (content[i] != '\n' && content[i] != '\0')
@@ -121,7 +120,6 @@ char *get_next_line(int fd)
         i++;
     }
     line[j] = '\0';
-    free (content);
-    content = ft_strjoin(rest(content), content);
+    content = backup(content);
     return (line);
 }

@@ -13,4 +13,7 @@ int main()
 	char *line2 = get_next_line(fd);
 	printf("%s\n", line2);
 	free(line2);
+	char *line3 = get_next_line(fd);
+	printf("%s\n", line3);
+	free(line3);
 }

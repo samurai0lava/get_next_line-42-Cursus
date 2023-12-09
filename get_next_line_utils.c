@@ -51,35 +51,22 @@ char	*ft_strdup(char *s1)
 }
 
 
-// char *rest(char *str)
-// {
-// 	char	*dst;
-// 	int		i;
-// 	int		j;
-
-// 	i = ft_line_len(str);
-// 	j = 0;
-// 	dst = malloc(sizeof(char) * ft_line_len(str) + 1);
-
-// 	while(str[i])
-// 		dst[j++] = str[i++];
-// 	dst[j + 1] = '\n';
-// 	return (dst);
-// }
-char	*rest(char *str)
+char *backup(char *str)
 {
-	char	*dst;
-	int		i;
-	int		j;
+	char *backup;
+	size_t i;
+	size_t j;
 
-	i = ft_line_len(str);
+	i = 0;
 	j = 0;
-	dst = malloc(sizeof(char) * (ft_line_len(str) + 1));
-
-	while (str[i])
-		dst[j++] = str[i++];
-	dst[j] = '\0'; // Null-terminate the destination string
-	return (dst);
+	backup = malloc(sizeof(char) * ft_strlen(str) + 1);
+	while(str[i] != '\n')
+		i++;
+	i++;
+	while(str[i])
+		backup[j++] = str[i++];
+	backup[j] = '\0';
+	return(backup);
 }
 
 char	*ft_strjoin(char *s1, char *s2)
