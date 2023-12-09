@@ -60,6 +60,8 @@ char *backup(char *str)
 	i = 0;
 	j = 0;
 	backup = malloc(sizeof(char) * ft_strlen(str) + 1);
+	if(!backup)
+		return(NULL);
 	while(str[i] != '\n')
 		i++;
 	i++;
