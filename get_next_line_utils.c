@@ -2,16 +2,6 @@
 
 
 
-size_t ft_line_len(char *str)
-{
-	size_t i;
-
-	i = 0 ;
-	while(str[i] != '\n')
-		i++;
-	return(i);
-}
-
 size_t ft_strlen(char *str)
 {
 	size_t i;
@@ -57,7 +47,6 @@ char *backup(char *str)
 	size_t i;
 	size_t j;
 
-	
 	i = 0;
 	j = 0;
 	backup = malloc(sizeof(char) * ft_strlen(str) + 1);

@@ -31,7 +31,7 @@ char *get_next_line(int fd)
     {
         buff[bytesRead] = '\0'; 
         tmp = ft_strjoin(content, buff);
-        free(content);
+        free(tmp);
         content = tmp;
         while (buff[i] != '\0' && buff[i] != '\n')
             i++;
