@@ -16,4 +16,9 @@ int main()
 	char *line3 = get_next_line(fd);
 	printf("%s\n", line3);
 	free(line3);
+	char *line4 = get_next_line(fd);
+	printf("%s\n", line4);
+	free(line4);
+
+
 }
