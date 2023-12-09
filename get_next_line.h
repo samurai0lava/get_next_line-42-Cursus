@@ -15,7 +15,11 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
-# define BUFF_SIZE 42
+
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 13
+# endif
 
 char	*get_next_line(int fd);
 size_t	ft_strlen(char *str);

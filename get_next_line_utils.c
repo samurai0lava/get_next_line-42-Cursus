@@ -49,21 +49,22 @@ char *backup(char *str)
 
 	i = 0;
 	j = 0;
+
+	while(str[i] != '\n' && str[i] != '\0')
+		i++;
+	i++;	
 	backup = malloc(sizeof(char) * ft_strlen(str) + 1);
 	if(!backup)
 		return(NULL);
-	while(str[i] != '\n' && str[i] != '\0')
-		i++;
-	i++;
 	while(str[i])
 		backup[j++] = str[i++];
 	backup[j] = '\0';
 	free(str);
-	if (backup[0] == '\0')
-	{
-		free(backup);
-		return(NULL);
-	}
+	// if (backup[0] == '\0')
+	// {
+	// 	free(backup);
+	// 	return(NULL);
+	// }
 	return(backup);
 }
 

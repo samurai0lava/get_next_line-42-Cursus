@@ -7,9 +7,8 @@ int main()
 	fd = open("Lorem", O_RDONLY);
 
 	char *line;
-	while ((line = get_next_line(fd)))
-	{
-		//printf("%s\n", line);
-		free(line);
-	}
+	line = get_next_line(fd);
+	printf("%s\n", line);
+	free(line);
+
 }
