@@ -60,11 +60,11 @@ char *backup(char *str)
 		backup[j++] = str[i++];
 	backup[j] = '\0';
 	free(str);
-	// if (backup[0] == '\0')
-	// {
-	// 	free(backup);
-	// 	return(NULL);
-	// }
+	if (backup[0] == '\0')
+	{
+		free(backup);
+		return(NULL);
+	}
 	return(backup);
 }
 
