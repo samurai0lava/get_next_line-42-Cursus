@@ -41,33 +41,6 @@ char	*ft_strdup(char *s1)
 }
 
 
-char *backup(char *str)
-{
-	char *backup;
-	size_t i;
-	size_t j;
-
-	i = 0;
-	j = 0;
-
-	while(str[i] != '\n' && str[i] != '\0')
-		i++;
-	i++;	
-	backup = malloc(sizeof(char) * ft_strlen(str) + 1);
-	if(!backup)
-		return(NULL);
-	while(str[i])
-		backup[j++] = str[i++];
-	backup[j] = '\0';
-	free(str);
-	if (backup[0] == '\0')
-	{
-		free(backup);
-		return(NULL);
-	}
-	return(backup);
-}
-
 char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*new_str;
