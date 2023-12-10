@@ -16,10 +16,11 @@
 # include <stdlib.h>
 # include <stdio.h>
 
+#ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 13
+#endif
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1
-# endif
+
 
 char	*get_next_line(int fd);
 size_t	ft_strlen(char *str);
@@ -27,7 +28,5 @@ char	*backup(char *str);
 char	*ft_strdup(char *s1);
 char	*ft_strjoin(char *s1, char *s2);
 size_t	ft_line_len(char *str);
-
-
 
 #endif 
