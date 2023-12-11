@@ -60,7 +60,7 @@ char *get_next_line(int fd)
     while ((bytesRead = read(fd, buff, BUFFER_SIZE)) > 0 )
     {    
         if (bytesRead < 0)
-        return (NULL);
+            return (NULL);
         buff[bytesRead] = '\0'; 
         tmp = ft_strjoin(content, buff);
         free(content);
@@ -69,15 +69,12 @@ char *get_next_line(int fd)
             i++;
         i = 0; 
     }
-    free(buff);    
-    
-
+    free(buff);
     if (bytesRead == 0 && content == NULL)
     {
         return (NULL);
         free(content);
     }
-
     j = 0;
     while (content[j] != '\n' && content[j] != '\0')
         j++;
