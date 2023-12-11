@@ -1,4 +1,4 @@
-    /* ************************************************************************** */
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
@@ -54,15 +54,17 @@ char *get_next_line(int fd)
     char *tmp;
     int bytesRead;
 
-    if(fd < 0 || BUFFER_SIZE < 0 || read(fd, buff, 0) < 0)
+    if(fd < 0 || BUFFER_SIZE < 0)
         return (NULL);
-    
+    if(read(fd, &line, 0) < 0)
+        return (NULL);
     buff = malloc(sizeof(char) * (BUFFER_SIZE + 1));
     if (!buff)
         return (NULL);
     buff[BUFFER_SIZE] = '\0';
+    bytesRead = 1;
     i = 0;
-    while ((bytesRead = read(fd, buff, BUFFER_SIZE)) > 0 )
+    while ((bytesRead = read(fd, buff, BUFFER_SIZE)) != 0 )
     {    
         if (bytesRead < 0)
             return (NULL);
@@ -76,10 +78,10 @@ char *get_next_line(int fd)
     }
     free(buff);
     //if found an empty string in the end of the file
-    if (bytesRead == 0 && !content)
+    if (bytesRead == 0 && (content == NULL || content[0] == '\0'))
     {
-        return (NULL);
         free(content);
+        return (NULL);    
     }
 
     while (content[i] != '\n' && content[i] != '\0')
@@ -96,4 +98,3 @@ char *get_next_line(int fd)
     content = rest(content);
     return (line);
 }
-    
