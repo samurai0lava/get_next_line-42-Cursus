@@ -49,7 +49,7 @@ char *get_next_line(int fd)
     char *tmp;
     int bytesRead;
 
-    if(fd < 0 || BUFFER_SIZE <= 0)
+    if(fd < 0 || BUFFER_SIZE < 0 || read(fd, buff, 0) < 0)
         return (NULL);
     
     buff = malloc(sizeof(char) * (BUFFER_SIZE + 1));
@@ -70,6 +70,7 @@ char *get_next_line(int fd)
         i = 0; 
     }
     free(buff);
+    //if found an empty string in the end of the file
     if (bytesRead == 0 && !content)
     {
         return (NULL);
