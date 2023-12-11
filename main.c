@@ -1,9 +1,14 @@
 #include "get_next_line.h"
 #include <fcntl.h>
 #include <stdio.h>
+#include <time.h>
 
 int main()
 {
+
+    clock_t begin = clock();    
+
+//**************************************************************************** */ 
     int fd;
     fd = open("Lorem", O_RDONLY);
 
@@ -14,6 +19,11 @@ int main()
         free(line);
     }
     close(fd);
-
+//**************************************************************************** */  
+   
+    clock_t end = clock();
+    double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    printf("Time spent: %f\n", time_spent);
+   
     return 0;
 }

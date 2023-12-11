@@ -70,7 +70,7 @@ char *get_next_line(int fd)
         i = 0; 
     }
     free(buff);
-    if (bytesRead == 0 && content == NULL)
+    if (bytesRead == 0 && !content)
     {
         return (NULL);
         free(content);
