@@ -10,7 +10,7 @@ int main()
 
 //**************************************************************************** */ 
     int fd;
-    fd = open("get_next_line.c", O_RDONLY);
+    fd = open("test.c", O_RDONLY);
 
     char *line;
     while ((line = get_next_line(fd)) != NULL)

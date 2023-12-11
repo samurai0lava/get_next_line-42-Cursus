@@ -21,7 +21,7 @@ static char  *rest(char *str)
 	i = 0;
 	j = 0;
 
-	while(str[i] != '\n' && str[i] != '\0')
+	while(str[i] != '\n' && str[i] != '\0') 
 		i++;
 	if(!str[i])
         {
@@ -39,8 +39,6 @@ static char  *rest(char *str)
 		backup[j++] = str[i++];
 	backup[j] = '\0';
     free(str);
-
-
 	return(backup);
 }
 
@@ -62,10 +60,10 @@ char *get_next_line(int fd)
     if (!buff)
         return (NULL);
     buff[BUFFER_SIZE] = '\0';
-    bytesRead = 1;
+
     i = 0;
     while ((bytesRead = read(fd, buff, BUFFER_SIZE)) != 0 )
-    {    
+    {   
         if (bytesRead < 0)
             return (NULL);
         buff[bytesRead] = '\0'; 
