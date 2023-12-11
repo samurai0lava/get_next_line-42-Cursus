@@ -12,60 +12,36 @@
 
 #include "get_next_line.h"
 
-// static char  *rest(char *str)
-// {
-// 	char *backup;
-// 	size_t i;
-// 	size_t j;
-
-// 	i = 0;
-// 	j = 0;
-
-// 	while(str[i] != '\n' && str[i] != '\0')
-// 		i++;
-// 	i++;	
-// 	backup = malloc(sizeof(char) * ft_strlen(str) + 1);
-// 	if(!backup)
-// 		return(NULL);
-// 	while(str[i])
-// 		backup[j++] = str[i++];
-// 	backup[j] = '\0';
-// 	free(str);
-// 	if (backup[0] == '\0')
-// 	{
-// 		free(backup);
-// 		return(NULL);
-// 	}
-
-// 	return(backup);
-// }
-static char	*ft_backup(char *stash)
+static char  *rest(char *str)
 {
-	char	*line;
-	int		i;
-	int		j;
+	char *backup;
+	size_t i;
+	size_t j;
 
 	i = 0;
-	while (stash[i] && stash[i] != '\n')
-		i++;
-	if (!stash[i])
-	{
-		free(stash);
-		return (NULL);
-	}
-	line = malloc((ft_strlen(stash) - i + 1) * sizeof(char));
-	if (!line)
-	{
-		free (stash);
-		return (NULL);
-	}
-	i++;
 	j = 0;
-	while (stash[i])
-		line[j++] = stash[i++];
-	line[j] = '\0';
-	free(stash);
-	return (line);
+
+	while(str[i] != '\n' && str[i] != '\0')
+		i++;
+	if(!str[i])
+        {
+        free(str);
+        return(NULL);
+    }	
+	backup = malloc(sizeof(char) * ft_strlen(str) + 1);
+    if (!backup)
+	{
+		free(backup);
+		return(NULL);
+	}
+    i++;
+	while(str[i])
+		backup[j++] = str[i++];
+	backup[j] = '\0';
+    free(str);
+
+
+	return(backup);
 }
 
 char *get_next_line(int fd)
@@ -117,7 +93,7 @@ char *get_next_line(int fd)
         i++;
     }
     line[i] = '\0';
-    content = ft_backup(content);
+    content = rest(content);
     return (line);
 }
     
