@@ -28,7 +28,7 @@ static char  *rest(char *str)
         free(str);
         return(NULL);
     }	
-	backup = malloc((ft_strlen(str) - i + 1) * sizeof(char));
+	backup = malloc(sizeof(char) * ft_strlen(str) + 1);// maybe not enough memory located here for a new line (failed with multiple new lines)
     if (!backup)
 	{
 		free(backup);
@@ -52,9 +52,7 @@ char *get_next_line(int fd)
     char *tmp;
     int bytesRead;
 
-    if(fd < 0 || BUFFER_SIZE < 0)
-        return (NULL);
-    if(read(fd, &line, 0) < 0)
+    if(fd < 0 || BUFFER_SIZE < 0 || read(fd, &line, 0) < 0)
         return (NULL);
     buff = malloc(sizeof(char) * (BUFFER_SIZE + 1));
     if (!buff)
@@ -81,7 +79,6 @@ char *get_next_line(int fd)
         free(content);
         return (NULL);    
     }
-
     while (content[i] != '\n' && content[i] != '\0')
         i++;
     line = malloc(sizeof(char) * (i + 1));
