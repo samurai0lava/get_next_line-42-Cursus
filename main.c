@@ -10,12 +10,12 @@ int main()
 
 //**************************************************************************** */ 
     int fd;
-    fd = open("test.c", O_RDONLY);
+    fd = open("test.c", O_RDONLY | O_APPEND| O_CREAT, 0666);
 
     char *line;
     while ((line = get_next_line(fd)) != NULL)
     {
-        printf("%s\n", line);
+        printf("%s", line);
         free(line);
     }
     close(fd);
