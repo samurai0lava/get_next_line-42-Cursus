@@ -89,7 +89,8 @@ char *get_next_line(int fd)
         line[i] = content[i];
         i++;
     }
-    line[i] = '\0';
+    line[i] = '\n'; // if '\n' is the last char in the file, then line[i + 1] = '\0
+    line[i + 1] = '\0';
     content = rest(content);
     return (line);
 }
