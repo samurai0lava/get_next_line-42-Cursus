@@ -20,7 +20,7 @@
 #  define BUFFER_SIZE 1
 #endif
 
-//size_t ft_strlen_sis(char *str);
+// size_t ft_strlen_new_line(char *str);
 
 char	*get_next_line(int fd);
 size_t	ft_strlen(char *str);

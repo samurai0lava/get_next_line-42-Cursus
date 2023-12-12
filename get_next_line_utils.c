@@ -1,5 +1,14 @@
 #include "get_next_line.h"
 
+// size_t ft_strlen_new_line(char *str)
+// {
+// 	size_t i;
+
+// 	i = 0 ;
+// 	while(str[i] != '\n')
+// 		i++;
+// 	return(i);
+// }
 size_t ft_strlen(char *str)
 {
 	size_t i;

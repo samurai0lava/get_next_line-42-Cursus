@@ -24,11 +24,11 @@ static char  *rest(char *str)
 	while(str[i] != '\n' && str[i] != '\0') 
 		i++;
 	if(!str[i])
-        {
+    {
         free(str);
         return(NULL);
     }	
-	backup = malloc(sizeof(char) * ft_strlen(str) + 1);
+	backup = malloc((ft_strlen(str) - i + 1) * sizeof(char));
     if (!backup)
 	{
 		free(backup);
