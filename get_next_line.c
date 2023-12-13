@@ -28,7 +28,8 @@ static char  *rest(char *str)
         free(str);
         return(NULL);
     }	
-	backup = malloc(sizeof(char) * ft_strlen(str) + 1);// maybe not enough memory located here for a new line (failed with multiple new lines)
+	backup = malloc((ft_strlen(str)  + 1) * sizeof(char));
+    // maybe not enough memory located here for a new line (failed with multiple new lines)
     if (!backup)
 	{
 		free(backup);
@@ -37,8 +38,9 @@ static char  *rest(char *str)
     i++;
 	while(str[i])
 		backup[j++] = str[i++];
-	backup[j] = '\0';
     free(str);
+	backup[j] = '\0';
+
 	return(backup);
 }
 
@@ -68,7 +70,7 @@ char *get_next_line(int fd)
         tmp = ft_strjoin(content, buff);
         free(content);
         content = tmp; 
-        while (buff[i] != '\0' && buff[i] != '\n')
+        while (buff[i] != '\n' && buff[i] != '\0')
             i++;
         i = 0; 
     }
@@ -82,6 +84,8 @@ char *get_next_line(int fd)
     while (content[i] != '\n' && content[i] != '\0')
         i++;
     line = malloc(sizeof(char) * (i + 1));
+    if(!line)
+        return(NULL);
     i = 0;
 
     while (content[i] != '\n' && content[i] != '\0')
@@ -89,8 +93,16 @@ char *get_next_line(int fd)
         line[i] = content[i];
         i++;
     }
-    line[i] = '\n'; // if '\n' is the last char in the file, then line[i + 1] = '\0
+    line[i] = '\n';
     line[i + 1] = '\0';
-    content = rest(content);
+
+
+     // if '\n' is the last char in the file, then line[i + 1] = '\0'
+    content = rest (content);
     return (line);
 }
+
+
+
+
+

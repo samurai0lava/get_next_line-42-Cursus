@@ -10,7 +10,7 @@ int main()
 
 //**************************************************************************** */ 
     int fd;
-    fd = open("test.c", O_RDONLY | O_APPEND| O_CREAT, 0666);
+    fd = open("giant_line_nl.txt", O_RDONLY | O_APPEND| O_CREAT, 0666);
 
     char *line;
     while ((line = get_next_line(fd)) != NULL)
