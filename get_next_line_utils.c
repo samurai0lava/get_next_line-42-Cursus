@@ -56,7 +56,10 @@ char	*ft_strdup(char *s1)
 
 	dst = (char *)malloc((ft_strlen(s1) + 1) * sizeof(char));
 	if (!dst)
+	{
+		free(dst);
 		return (NULL);
+	}
 	ft_strlcpy(dst, s1, ft_strlen(s1) + 1);
 	return (dst);
 }
@@ -78,7 +81,10 @@ char	*ft_strjoin(char *s1, char *s2)
 	j = 0;
 	new_str = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
 	if (!new_str)
+	{
+		free(new_str);
 		return (NULL);
+	}
 	while (s1[i])
 		new_str[j++] = s1[i++];
 	i = 0;
